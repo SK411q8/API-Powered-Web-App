@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Multi-API Auto Parts & Vehicle Finder</title>
+        <!-- Bulma CSS Framework -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+        />
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=hRQuz68ryrte-SUulELrk2QQB3bR6JeRWDTY2MUoVEDs2AZVwiU-devwQwLbSEWdMIwuxUI5LkolPoo_AaFdkW0yWQoPCtJpvrTJmosFPUWdDle-gWBpR6kbv2DztmxE-CMUNhAEGtxPRuIGulFU7obheWfMJo8d9zp0XotEhcAkJyZMRujs2UNXOfRGic7L-CUADm9FDqmIZwscqtZmxg" charset="UTF-8"></script></head>
+    <body
+        class="has-background-light"
+        style="min-height: 100vh; padding: 2.5rem 0"
+    >
+        <div class="container px-4" style="max-width: 1240px">
+            <header class="has-text-centered mb-6">
+                <h1
+                    class="title is-2 has-text-link has-text-weight-extrabold mb-3"
+                >
+                    Cross-API Automotive Catalog Bridge
+                </h1>
+                <p class="subtitle is-5 has-text-grey">
+                    Configure a vehicle profile via CarAPI, then match technical
+                    specifications to aftermarket parts databases.
+                </p>
+            </header>
+
+            <!-- Search & Filter Panel (Bulma Box) -->
+            <div class="box mb-6 p-5">
+                <div class="columns is-multiline">
+                    <!-- 1. Year Dropdown -->
+                    <div class="column is-one-fifth-desktop is-half-tablet">
+                        <div class="field">
+                            <div
+                                class="is-flex is-justify-content-space-between is-align-items-center mb-2"
+                            >
+                                <label
+                                    class="label is-size-7 mb-0"
+                                    for="select-year"
+                                    >1. Year</label
+                                >
+                                <span class="tag is-danger is-light"
+                                    >CarAPI</span
+                                >
+                            </div>
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select id="select-year">
+                                        <option value="">Select Year...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Manufacturer Dropdown -->
+                    <div class="column is-one-fifth-desktop is-half-tablet">
+                        <div class="field">
+                            <div
+                                class="is-flex is-justify-content-space-between is-align-items-center mb-2"
+                            >
+                                <label
+                                    class="label is-size-7 mb-0"
+                                    for="select-maker"
+                                    >2. Manufacturer</label
+                                >
+                                <span class="tag is-danger is-light"
+                                    >CarAPI</span
+                                >
+                            </div>
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select id="select-maker" disabled>
+                                        <option value="">
+                                            Select Brand...
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Model Series Dropdown -->
+                    <div class="column is-one-fifth-desktop is-half-tablet">
+                        <div class="field">
+                            <div
+                                class="is-flex is-justify-content-space-between is-align-items-center mb-2"
+                            >
+                                <label
+                                    class="label is-size-7 mb-0"
+                                    for="select-model"
+                                    >3. Model Series</label
+                                >
+                                <span class="tag is-danger is-light"
+                                    >CarAPI</span
+                                >
+                            </div>
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select id="select-model" disabled>
+                                        <option value="">
+                                            Select Model...
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Trim Dropdown -->
+                    <div class="column is-one-fifth-desktop is-half-tablet">
+                        <div class="field">
+                            <div
+                                class="is-flex is-justify-content-space-between is-align-items-center mb-2"
+                            >
+                                <label
+                                    class="label is-size-7 mb-0"
+                                    for="select-trim"
+                                    >4. Trim / Engine</label
+                                >
+                                <span class="tag is-danger is-light"
+                                    >CarAPI</span
+                                >
+                            </div>
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select id="select-trim" disabled>
+                                        <option value="">Select Trim...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Component Category Dropdown -->
+                    <div class="column is-one-fifth-desktop is-half-tablet">
+                        <div class="field">
+                            <div
+                                class="is-flex is-justify-content-space-between is-align-items-center mb-2"
+                            >
+                                <label
+                                    class="label is-size-7 mb-0"
+                                    for="select-group"
+                                    >5. Parts Group</label
+                                >
+                                <span class="tag is-info is-light"
+                                    >Auto Parts</span
+                                >
+                            </div>
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select id="select-group" disabled>
+                                        <option value="">
+                                            Select Category...
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Layout Split Grid -->
+            <div class="columns is-desktop">
+                <!-- Left Sidebar: Selected Vehicle Showcase Card -->
+                <aside class="column is-one-third-desktop">
+                    <div class="card mb-5">
+                        <div
+                            class="card-image p-5 has-background-white"
+                            id="vehicle-img-card"
+                            style="border-bottom: 1px solid #f5f5f5"
+                        >
+                            <div
+                                class="is-flex is-align-items-center is-justify-content-center"
+                                id="vehicle-img-box"
+                                style="min-height: 220px; max-height: 250px"
+                            >
+                                <div
+                                    class="has-text-grey has-text-centered p-4"
+                                >
+                                    Awaiting CarAPI vehicle parameters selection
+                                    to fetch design renderings...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content has-text-centered">
+                            <h3 class="title is-4 mb-2" id="vehicle-txt-title">
+                                —
+                            </h3>
+                            <p
+                                class="subtitle is-6 has-text-grey mb-0"
+                                id="vehicle-txt-subtitle"
+                            >
+                                No vehicle contextualized
+                            </p>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Right Side: Compatible Parts Grid -->
+                <main class="column is-two-thirds-desktop">
+                    <h2 class="title is-4 mb-4">Compatible Parts Registry</h2>
+                    <div class="columns is-multiline" id="parts-display-grid">
+                        <div class="column is-full">
+                            <div
+                                class="notification is-info is-light has-text-centered py-6"
+                            >
+                                <p class="title is-5 mb-3">
+                                    Complete steps 1 through 4 using the
+                                    configuration menu above.
+                                </p>
+                                <p class="subtitle is-6 has-text-grey">
+                                    The backend engine will automatically map
+                                    the structural parameters across databases
+                                    to unlock the parts groups filter.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <script src="app.js"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"642255d447fd46dbbcd67f3ff9dbdf59","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
